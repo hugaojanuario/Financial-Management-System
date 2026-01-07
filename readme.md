@@ -1,29 +1,41 @@
-📌 ENUNCIADO DO PROJETO
-Sistema de Gerenciamento Financeiro com Relatórios por Intervalo de Tempo
-1️⃣ DESCRIÇÃO GERAL
+📌 Sistema de Gerenciamento Financeiro
+Relatórios Financeiros por Intervalo de Tempo
+📖 Descrição Geral
 
-Desenvolver um sistema backend de gerenciamento financeiro, utilizando Java e Spring Boot, capaz de registrar operações financeiras (receitas e despesas) e gerar relatórios financeiros completos com base em um intervalo de tempo definido pelo usuário.
+Este projeto consiste no desenvolvimento de um sistema backend de gerenciamento financeiro, utilizando Java e Spring Boot, com o objetivo de registrar operações financeiras (receitas e despesas) e gerar relatórios financeiros completos com base em um intervalo de tempo definido pelo usuário.
 
-O sistema deverá expor uma API REST, seguindo boas práticas de arquitetura, organização de código e separação de responsabilidades.
+O sistema expõe uma API REST, seguindo boas práticas de arquitetura, organização de código, separação de responsabilidades e escalabilidade.
 
-2️⃣ FUNCIONALIDADES OBRIGATÓRIAS
-2.1 Usuário
+🎯 Objetivo do Projeto
 
-Cadastrar usuário
+Permitir que usuários:
 
-Identificar o usuário responsável pelas operações financeiras
+Cadastrem e gerenciem suas receitas e despesas
+
+Classifiquem operações por categorias
+
+Consultem relatórios financeiros detalhados dentro de um intervalo de datas
+
+Visualizem totais e saldo financeiro consolidado
+
+⚙️ Funcionalidades
+👤 Usuário
+
+Cadastro de usuários
+
+Identificação do usuário responsável pelas operações financeiras
 
 Um usuário pode possuir várias operações financeiras
 
-2.2 Operações Financeiras
+💰 Operações Financeiras
 
-O sistema deverá tratar operações financeiras de dois tipos:
+O sistema trabalha com dois tipos de operações:
 
 Receita
 
 Despesa
 
-Cada operação financeira deve possuir:
+Cada operação financeira contém:
 
 Descrição
 
@@ -33,29 +45,29 @@ Data da operação
 
 Tipo da operação (receita ou despesa)
 
-Categoria
+Categoria associada
 
-Usuário associado
+Usuário responsável
 
-2.3 Categorias
+🏷️ Categorias
 
 Cadastro de categorias financeiras
 
-Exemplo: Alimentação, Transporte, Lazer, Salário, Aluguel
+Exemplos: Alimentação, Transporte, Lazer, Salário, Aluguel
 
-Cada operação deve obrigatoriamente possuir uma categoria
+Toda operação financeira deve estar vinculada a uma categoria
 
-2.4 Relatórios Financeiros (PONTO CENTRAL DO PROJETO ❗)
+📊 Relatórios Financeiros (Funcionalidade Principal)
 
-O sistema deverá permitir gerar relatórios financeiros com base em:
+O sistema permite a geração de relatórios financeiros com base em:
 
 Intervalo de tempo (data inicial e data final)
 
 Usuário específico
 
-O relatório deverá conter:
+O relatório financeiro deve apresentar:
 
-Todas as operações financeiras no período
+Lista de todas as operações no período informado
 
 Separação entre receitas e despesas
 
@@ -65,76 +77,63 @@ Total de despesas no período
 
 Saldo final do período (receitas − despesas)
 
-Agrupamento opcional por categoria
+Agrupamento opcional dos valores por categoria
 
-3️⃣ REQUISITOS NÃO FUNCIONAIS
+## 🧱 Estrutura do Projeto
 
-API RESTful
-
-Padrão MVC adaptado para REST
-
-Uso de DTOs para entrada e saída de dados
-
-Validação de dados de entrada
-
-Tratamento global de exceções
-
-Código organizado, legível e escalável
-
-Banco de dados relacional
-
-4️⃣ ESTRUTURA DE PACOTES (OBRIGATÓRIA)
+```text
 finance-manager/
- └── src/
-     └── main/
-         ├── java/
-         │   └── com/
-         │       └── seuusuario/
-         │           └── financemanager/
-         │               ├── FinanceManagerApplication
-         │               │
-         │               ├── controller
-         │               │   ├── UsuarioController
-         │               │   ├── OperacaoController
-         │               │   ├── CategoriaController
-         │               │   └── RelatorioController
-         │               │
-         │               ├── service
-         │               │   ├── UsuarioService
-         │               │   ├── OperacaoService
-         │               │   ├── CategoriaService
-         │               │   └── RelatorioService
-         │               │
-         │               ├── repository
-         │               │   ├── UsuarioRepository
-         │               │   ├── OperacaoRepository
-         │               │   └── CategoriaRepository
-         │               │
-         │               ├── entity
-         │               │   ├── Usuario
-         │               │   ├── OperacaoFinanceira
-         │               │   └── Categoria
-         │               │
-         │               ├── dto
-         │               │   ├── UsuarioDTO
-         │               │   ├── OperacaoRequestDTO
-         │               │   ├── OperacaoResponseDTO
-         │               │   └── RelatorioDTO
-         │               │
-         │               ├── exception
-         │               │   ├── BusinessException
-         │               │   ├── ResourceNotFoundException
-         │               │   └── GlobalExceptionHandler
-         │               │
-         │               └── config
-         │                   ├── SwaggerConfig
-         │                   └── SecurityConfig (futuro)
-         │
-         └── resources/
-             ├── application.yml
-             └── data.sql (opcional)
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/
+        │       └── seuusuario/
+        │           └── financemanager/
+        │               ├── FinanceManagerApplication.java
+        │               │
+        │               ├── controller/
+        │               │   ├── UsuarioController.java
+        │               │   ├── OperacaoController.java
+        │               │   ├── CategoriaController.java
+        │               │   └── RelatorioController.java
+        │               │
+        │               ├── service/
+        │               │   ├── UsuarioService.java
+        │               │   ├── OperacaoService.java
+        │               │   ├── CategoriaService.java
+        │               │   └── RelatorioService.java
+        │               │
+        │               ├── repository/
+        │               │   ├── UsuarioRepository.java
+        │               │   ├── OperacaoRepository.java
+        │               │   └── CategoriaRepository.java
+        │               │
+        │               ├── entity/
+        │               │   ├── Usuario.java
+        │               │   ├── OperacaoFinanceira.java
+        │               │   └── Categoria.java
+        │               │
+        │               ├── dto/
+        │               │   ├── UsuarioDTO.java
+        │               │   ├── OperacaoRequestDTO.java
+        │               │   ├── OperacaoResponseDTO.java
+        │               │   └── RelatorioDTO.java
+        │               │
+        │               ├── exception/
+        │               │   ├── BusinessException.java
+        │               │   ├── ResourceNotFoundException.java
+        │               │   └── GlobalExceptionHandler.java
+        │               │
+        │               └── config/
+        │                   ├── SwaggerConfig.java
+        │                   └── SecurityConfig.java
+        │
+        └── resources/
+            ├── application.yml
+            └── data.sql
+```
 
-5️⃣ MODELO CONCEITUAL (ENTIDADES)
+🧠 Modelo Conceitual
 Usuário
 
 Identificador único
@@ -153,7 +152,7 @@ Descrição
 
 Valor
 
-Data
+Data da operação
 
 Tipo (Receita ou Despesa)
 
@@ -169,54 +168,33 @@ Nome
 
 Tipo opcional (Receita / Despesa / Ambos)
 
-6️⃣ REGRAS DE NEGÓCIO (NÃO ESQUECER ❗)
+📏 Regras de Negócio
 
-Uma operação SEMPRE pertence a um usuário
+Toda operação financeira deve pertencer a um usuário
 
-Uma operação SEMPRE possui uma categoria
+Toda operação financeira deve possuir uma categoria
 
 Valores não podem ser negativos
 
-Datas futuras podem ser permitidas ou não (decisão de projeto)
+A permissão para datas futuras é uma decisão de projeto
 
-Relatórios devem respeitar rigorosamente o intervalo informado
+Relatórios devem respeitar rigorosamente o intervalo de datas informado
 
-O sistema não deve misturar dados de usuários diferentes
+Dados de usuários diferentes não devem ser misturados
 
-7️⃣ RELATÓRIO FINANCEIRO – DETALHAMENTO
-Entrada do relatório:
+🔄 Fluxo de Funcionamento
 
-ID do usuário
+Usuário é cadastrado no sistema
 
-Data inicial
-
-Data final
-
-Saída esperada:
-
-Lista de operações no período
-
-Total de receitas
-
-Total de despesas
-
-Saldo do período
-
-Totais agrupados por categoria (opcional)
-
-8️⃣ FLUXO DE FUNCIONAMENTO
-
-Usuário é cadastrado
-
-Categorias são criadas
+Categorias financeiras são criadas
 
 Usuário registra receitas e despesas
 
-Usuário solicita relatório informando um intervalo de datas
+Usuário solicita um relatório informando um intervalo de datas
 
-Sistema retorna o relatório financeiro consolidado
+O sistema retorna o relatório financeiro consolidado
 
-9️⃣ TECNOLOGIAS SUGERIDAS
+🛠️ Tecnologias Utilizadas
 
 Java 17+
 
@@ -226,8 +204,8 @@ Spring Web
 
 Spring Data JPA
 
-Validation
+Bean Validation
 
-Banco relacional (H2 / PostgreSQL)
+Banco de dados relacional (H2 ou PostgreSQL)
 
-Swagger para documentação
+Swagger para documentação da API
