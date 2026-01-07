@@ -134,7 +134,8 @@ finance-manager/
 ```
 
 🧠 Modelo Conceitual
-Usuário
+
+Usuário:
 
 Identificador único
 
@@ -144,7 +145,7 @@ Email
 
 Lista de operações financeiras
 
-Operação Financeira
+Operação Financeira:
 
 Identificador único
 
@@ -156,7 +157,7 @@ Data da operação
 
 Tipo (Receita ou Despesa)
 
-Categoria
+Categoria:
 
 Usuário
 
